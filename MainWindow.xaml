@@ -1,0 +1,141 @@
+﻿<Window x:Class="WpfApplication1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplication1"
+        mc:Ignorable="d"
+        Title="OBS Settings" Height="750" Width="1250" Activated="Window_Activated">
+    <Grid Background="#FF1C1C1C">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="22*"/>
+            <ColumnDefinition Width="745*"/>
+        </Grid.ColumnDefinitions>
+
+        <TabControl x:Name="tabControl" Grid.ColumnSpan="2" Margin="10" Background="Black" BorderBrush="Black">
+            <TabItem Header="Stream Settings" Background="#FFE5E5E5" FontFamily="Open Sans">
+                <Grid>
+                    <Grid.Background>
+                        <ImageBrush ImageSource="ssbg.jpg" Stretch="UniformToFill" TileMode="FlipX"/>
+                    </Grid.Background>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="13*"/>
+                        <ColumnDefinition Width="31*"/>
+                        <ColumnDefinition Width="83*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="1079*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="CPULabel" Content="CPU:" Margin="-2.94,210,-4.706,0" VerticalAlignment="Top" Height="26" Grid.Column="1" d:LayoutOverrides="TopMargin, BottomMargin" Foreground="White" FontWeight="Bold" FontFamily="Open Sans" Grid.ColumnSpan="2"/>
+                    <Label x:Name="GrabCPU" Content="" Margin="185.992,208.931,0,0" VerticalAlignment="Top" Height="26" Grid.Column="4" HorizontalAlignment="Left" Width="308" Foreground="White" Background="#FF202020"/>
+                    <Label x:Name="GPULabel" Content="GPU:" Margin="-3.94,253,-4.706,0" VerticalAlignment="Top" Height="26" Grid.Column="1" d:LayoutOverrides="TopMargin, BottomMargin" Foreground="White" FontWeight="Bold" FontFamily="Open Sans" Grid.ColumnSpan="2"/>
+                    <Label x:Name="GrabGPU" Content="" Margin="185.992,253,492.008,0" VerticalAlignment="Top" Height="26" Grid.Column="4" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Foreground="White" Background="#FF202020"/>
+                    <Label x:Name="GameType" Content="Game Type:" Margin="-3.94,296,0,0" VerticalAlignment="Top" Height="26" Grid.Column="1" HorizontalAlignment="Left" Width="7.932" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
+                    <Label x:Name="UploadLabel" Content="Upload Speed:" Margin="-3.94,0,3.008,306.04" VerticalAlignment="Bottom" Height="26" Grid.Column="1" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Foreground="White" FontWeight="Bold" FontFamily="Open Sans" Grid.ColumnSpan="3"/>
+                    <Button x:Name="UploadButton" Content="Get Upload Speed" Margin="48.992,0,0,306.04" VerticalAlignment="Bottom" FontSize="12" Click="UploadButton_Click" Height="26" HorizontalAlignment="Left" Width="120" Grid.Column="4" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Background="#FF7063B5" Foreground="White"/>
+                    <ComboBox x:Name="GrabGameType" Margin="48.992,296,0,0" VerticalAlignment="Top" Height="26" DropDownClosed="GrabGameType_DropDownClosed" HorizontalAlignment="Left" Width="120" Grid.Column="4" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Foreground="#FF2D2D2D">
+                        <ComboBox.Background>
+                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                                <GradientStop Color="#FF2D2D2D" Offset="1"/>
+                                <GradientStop Color="#FF5D5D5D" Offset="0.464"/>
+                            </LinearGradientBrush>
+                        </ComboBox.Background>
+                    </ComboBox>
+                    <TextBox x:Name="GameTypeDescription" Height="26" Margin="185.992,296,318.008,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" TextChanged="textBox_TextChanged" Grid.Column="4" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Background="#FF202020" Foreground="White" BorderBrush="#FF202020" SelectionBrush="#FF006CBF"/>
+                    <Label x:Name="uploadHelpMessage" Content="This will navigate you to speedtest.net where you will &quot;Begin Test&quot; and find your &quot;Upload Speed.&quot;" Margin="185.992,0,205.008,306.04" VerticalAlignment="Bottom" Height="26" FontSize="12" Grid.Column="4" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" FontFamily="Open Sans" Foreground="White"/>
+                    <Button x:Name="getStreamSettings" Content="GET STREAM SETTINGS" Margin="363.992,0,492.008,16.04" VerticalAlignment="Bottom" FontSize="13.5" FontWeight="Bold" Height="44" Click="getStreamSettings_Click" Grid.Column="4" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Background="#FF3EB870" BorderBrush="White" BorderThickness="3" FontFamily="Lato Black"/>
+                    <TextBox x:Name="enterUploadSpeed" HorizontalAlignment="Left" Text ="Upload Speed (Mbps)" Height="26" Margin="48.992,0,0,263.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="120" TextChanged="textBox_TextChanged_1" FontSize="11" PreviewMouseLeftButtonDown="enterUploadSpeed_PreviewMouseLeftButtonDown" Grid.Column="4" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" FontFamily="Open Sans" Background="#FF2D2D2D" Foreground="White" SelectionBrush="#FF006CBF"/>
+                    <Label x:Name="helpMessage" Content="" Margin="185.992,0,205.008,263.04" VerticalAlignment="Bottom" Height="26" FontSize="12" Grid.Column="4" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Foreground="White"/>
+                    <ComboBox x:Name="grabCompType" HorizontalAlignment="Left" Margin="48.992,210,0,0" VerticalAlignment="Top" Width="120" Height="26" Grid.Column="4" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" FontFamily="Open Sans"/>
+                    <Label x:Name="enterInfoLabel" Content="Section 1: Information" Margin="2.06,168,-45.422,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Grid.ColumnSpan="4" Height="28.62" Foreground="#FF006CBF"/>
+                    <Label x:Name="nearestLocationLabel" Content="Nearest Location:" Margin="-2.94,0,3.028,220.08" VerticalAlignment="Bottom" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Grid.Column="1" Height="25.96" Foreground="White" FontWeight="Bold" FontFamily="Open Sans" Grid.ColumnSpan="3"/>
+                    <ComboBox x:Name="geolocationBox" HorizontalAlignment="Left" Margin="48.992,0,0,220.04" VerticalAlignment="Bottom" Width="120" Height="26" Grid.Column="4" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Background="#FF2D2D2D" FontFamily="Open Sans"/>
+                    <Label x:Name="streamKeyLabel" Content="Stream Key:" Margin="-2.94,0,0,134.08" VerticalAlignment="Bottom" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Grid.Column="1" HorizontalAlignment="Left" Height="25.96" Width="7.652"/>
+                    <Label x:Name="twitchUsernameLabel" Content="Twitch Username:" Margin="-2.94,0,2.218,177.08" VerticalAlignment="Bottom" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Grid.Column="1" Height="25.96" Foreground="White" FontWeight="Bold" FontFamily="Open Sans" Grid.ColumnSpan="3"/>
+                    <TextBox x:Name="enterTwitchUsername" HorizontalAlignment="Left" Height="27" Margin="48.992,0,0,177.04" TextWrapping="Wrap" Text="Username Here" VerticalAlignment="Bottom" Width="120" PreviewMouseLeftButtonDown="enterTwitchUsername_PreviewMouseLeftButtonDown" Grid.Column="4" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" TextAlignment="Center" Background="#FF2D2D2D" FontFamily="Open Sans" Foreground="White" Grid.IsSharedSizeScope="True" SelectionBrush="#FF006CBF"/>
+                    <Button x:Name="streamKeyFinder" Content="Get Stream Key" HorizontalAlignment="Left" Margin="48.992,0,0,133.04" VerticalAlignment="Bottom" Width="120" Height="27" Click="streamKeyFinder_Click" Grid.Column="4" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Background="#FF7063B5" Foreground="White"/>
+                    <Label x:Name="userNameDes" Content='Please make sure you enter the correct username and are logged into Twitch before pressing "Get Stream Key."' Margin="185.992,0,207.008,177.08" VerticalAlignment="Bottom" Grid.Column="4" Height="25.96" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" FontFamily="Open Sans" Foreground="White"/>
+                    <PasswordBox x:Name="streamKeyPasswordBox" Margin="48.992,0,0,91.04" VerticalAlignment="Bottom" Height="26" HorizontalAlignment="Left" Width="329" Grid.Column="4" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Background="#FF202020" BorderBrush="#FF202020" Foreground="White" SelectionBrush="#FF006CBF" />
+                    <Label x:Name="enterKeyHereLabel" Content="Enter Key Here:" Margin="-2.94,0,-7.992,91.08" VerticalAlignment="Bottom" Grid.Column="1" Height="25.96" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Foreground="White" FontWeight="Bold" FontFamily="Open Sans" Grid.ColumnSpan="3"/>
+                    <Label x:Name="streamKeyHelpMessage" Content="This will navigate you to twitch.tv where you will press &quot;Show Key.&quot; Copy and paste the Stream Key below." Margin="183.992,0,207.008,134.04" VerticalAlignment="Bottom" Height="26" FontSize="12" Grid.Column="4" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" FontFamily="Open Sans" Foreground="White"/>
+                    <Separator Height="22" Margin="-2.94,134,10,0" VerticalAlignment="Top" Grid.ColumnSpan="4" Grid.Column="1" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Background="#FF006CBF"/>
+                    <TextBlock x:Name="textBlock" Margin="-3.94,10,10.94,0" FontStyle ="Italic"  TextWrapping="Wrap" VerticalAlignment="Top" Height="119" Grid.ColumnSpan="4" Grid.Column="1" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Foreground="White" FontFamily="Open Sans"><Run Text="Here's how to get the best settings using our algorithm."/><LineBreak/><Run/><LineBreak/><Run Text="&#x9;1. Fill in all of the information in Section 1: Information. "/><LineBreak/><Run Text="&#x9;2. Press &quot;Get Stream Settings.&quot; Our algorithm will produce the best settings for your current setup. Note that if you did not fill in certain parts in the first section, it will give you an error in Section 2: Results."/><LineBreak/><Run Text="&#x9;3. You will be redirected to the &quot;Results&quot; tab where you can see the settings determined by the algorithm and either send them to OBS or play around with the values yourself."/><LineBreak/><Run/><LineBreak/><Run Text="NOTE: This section is purely to provide settings that will allow you to stream. Stream additions called plug-ins (this includes Twitch Alerts, Twitch Chat functionality, etc.) are located under the &quot;Plugins&quot; tab above."/></TextBlock>
+                    <ComboBox x:Name="GPUTypeBox" HorizontalAlignment="Left" Margin="48.992,253,0,0" VerticalAlignment="Top" Width="120" Height="26" Grid.Column="4" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
+                    <Label x:Name="getStreamSettingsHelp" Content="" HorizontalAlignment="Right" Margin="0,0,192.008,32.08" VerticalAlignment="Bottom" Width="300" Grid.Column="4" Height="25.96" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Foreground="White"/>
+                    <Label x:Name="enterKeyHelp" Content="" Margin="382.992,0,318.008,91.08" VerticalAlignment="Bottom" Grid.Column="4" Height="25.96" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Foreground="White"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Results" FontFamily="Open Sans">
+                <Grid>
+                    <Grid.Background>
+                        <ImageBrush ImageSource="ssbg.jpg" Stretch="UniformToFill"/>
+                    </Grid.Background>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="39*"/>
+                        <ColumnDefinition Width="119*"/>
+                        <ColumnDefinition Width="26*"/>
+                        <ColumnDefinition Width="1022*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="5.346,8.931,0,0" FontStyle ="Italic"  TextWrapping="Wrap" VerticalAlignment="Top" Height="136" Width="1196" Grid.Column="1" Grid.ColumnSpan="4" Foreground="White" FontFamily="Open Sans"><Run Text="Here are the settings created by the algorithm and what you can do with them."/><LineBreak/><Run/><LineBreak/><Run Text="&#x9;1. The &quot;Recommended Bitrate Based on Motion&quot; is NOT what your bitrate will be set to in OBS. It is the recommended value for the games that you are playing. If your Maximum Bitrate (3) is LOWER than the &#x9;Recommended Bitrate (2), then you might not be able to stream the types of games you specified."/><LineBreak/><Run Text="&#x9;2. You can choose to send your settings to OBS by pressing &quot;Send To OBS.&quot; The only reason you would not do this is if you wanted to manually enter/play around with the OBS values yourself."/><LineBreak/><Run Text="&#x9;&#x9;- You MUST enter all required information in Section 1: Information on the &quot;Stream Settings&quot; tab before you can send your settings to OBS."/><LineBreak/><Run/><LineBreak/><Run Text="NOTE: This section is purely to provide settings that will allow you to stream. Stream additions called plug-ins (this includes Twitch Alerts, Twitch Chat functionality, etc.) are located under the &quot;Plugins&quot; tab above."/></TextBlock>
+                    <Separator Height="22" Margin="0,151,12,0" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="4" Background="#FF006CBF"/>
+                    <Label x:Name="enterInfoLabel_Copy" Content="Section 2: Results" FontSize="16" Margin="0,178,-19.363,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="1" Height="26" Grid.ColumnSpan="3" Foreground="#FF006CBF" FontFamily="Lato"/>
+                    <Label x:Name="recFPS" Content="Recommended Frames Per Second:" Margin="-1,232,-19.363,0" VerticalAlignment="Top" Height="26" Grid.ColumnSpan="3" Foreground="White" Grid.Column="1" FontFamily="Open Sans"/>
+                    <Label x:Name="maxBitrateValue" Content="" Margin="-1,402,-51.363,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="15" Height="37" Grid.ColumnSpan="3" Grid.Column="1" Foreground="White" />
+                    <TextBox x:Name="maxBitrateDes" Margin="58.363,371.862,0,0" VerticalAlignment="Top" TextWrapping="Wrap" Height="64" FontSize="12" HorizontalAlignment="Left" Width="952" Grid.Column="4" Background="#FF202020" BorderBrush="#FF202020" FontFamily="Open Sans" SelectionBrush="#FF006CBF" Foreground="White"/>
+                    <Label x:Name="recResValue" Content="" Margin="0,465,-52.363,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="15" Height="37" Grid.Column="1" Grid.ColumnSpan="3" Foreground="White" />
+                    <TextBox x:Name="recResDes" Margin="58.363,441.931,0,0" VerticalAlignment="Top" TextWrapping="Wrap" Height="64" FontSize="12" HorizontalAlignment="Left" Width="952" Grid.Column="4" Background="#FF202020" BorderBrush="#FF202020" FontFamily="Open Sans" SelectionBrush="#FF006CBF" Foreground="White"/>
+                    <Button x:Name="sendToOBS" Content="SEND TO OBS" Margin="221.363,544,645.749,0" VerticalAlignment="Top" FontSize="13.5" FontWeight="Bold" Height="43" HorizontalAlignment="Stretch" Click="sendToOBS_Click" Grid.Column="4" Foreground="White" Background="#FF3EB870" BorderThickness="2" BorderBrush="White" FontFamily="Open Sans"/>
+                    <Label x:Name="sendtoOBSLabel" HorizontalContentAlignment="Center" Content="Pressing &quot;Send To OBS&quot; will instantly send all of the above settings to OBS under the profile name &quot;StreamStarter.&quot;" HorizontalAlignment="Left" Margin="76.552,593.069,0,0" VerticalAlignment="Top" Width="695.712" Grid.Column="4" Height="26" Foreground="White" FontFamily="Open Sans"/>
+                    <TextBox x:Name="recFPSDes" Margin="58.363,233.862,0,0" VerticalAlignment="Top" TextWrapping="Wrap" Height="64" FontSize="12" HorizontalAlignment="Left" Width="952" Grid.Column="4" Background="#FF202020" BorderBrush="#FF202020" FontFamily="Open Sans" SelectionBrush="#FF006CBF" Foreground="White"/>
+                    <Label x:Name="recFPSValue" Content="" Margin="-1,263,-51.363,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="15" Height="37" Grid.ColumnSpan="3" Grid.Column="1" Foreground="White" />
+                    <Label x:Name="bitrateMotion" Content="Recommended Bitrate Based On Motion:" Margin="-1,301,-56.363,0" VerticalAlignment="Top" Height="26" Grid.ColumnSpan="3" Foreground="White" Grid.Column="1" FontFamily="Open Sans"/>
+                    <Label x:Name="maxBitrateBuffer" Content="Maximum Bitrate and Buffer Size:" Margin="-1,370,-19.363,0" VerticalAlignment="Top" Height="26" Grid.ColumnSpan="3" Foreground="White" Grid.Column="1" FontFamily="Open Sans"/>
+                    <Label x:Name="recResolution" Content="Recommended Resolution:" Margin="-1,439,-19.363,0" VerticalAlignment="Top" Height="26" Grid.ColumnSpan="3" Foreground="White" Grid.Column="1" FontFamily="Open Sans"/>
+                    <Label x:Name="bitrateMotionValue" Content="" Margin="-1,332,-51.363,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="15" Height="37" Grid.ColumnSpan="3" Grid.Column="1" Foreground="White" />
+                    <TextBox x:Name="bitrateMotionDes" Margin="58.363,302.862,0,0" VerticalAlignment="Top" TextWrapping="Wrap" Height="64" FontSize="12" Grid.Column="4" HorizontalAlignment="Left" Width="952" Background="#FF202020" BorderBrush="#FF202020" FontFamily="Open Sans" SelectionBrush="#FF006CBF" Foreground="White"/>
+                    <Button x:Name="openOBSButton" Content="OPEN OBS" Margin="467.363,544,387.987,0" VerticalAlignment="Top" FontSize="13.5" FontWeight="Bold" Height="43" HorizontalAlignment="Stretch" Width="167" Click="openOBSButton_Click" Grid.Column="4" IsEnabled="False" d:LayoutOverrides="HorizontalAlignment" FontFamily="Open Sans"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Plugins" FontFamily="Open Sans">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="357*"/>
+                        <ColumnDefinition Width="251*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.Background>
+                        <ImageBrush ImageSource="ssbg.jpg" Stretch="UniformToFill"/>
+                    </Grid.Background>
+                    <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="10,10,0,0" FontStyle ="Italic"  TextWrapping="Wrap" VerticalAlignment="Top" Height="82" Width="1196" FontFamily="Open Sans" Foreground="White" Grid.ColumnSpan="2"><Run Text="Plugins are &quot;add-ons&quot; to OBS that increase functionality. We recommend you download the plugins below for the best streaming experience."/><LineBreak/><Run/><LineBreak/><Run Text="&#x9;1. Our program automatically detects your operating system (currently only for Windows). Since plugin requirements vary based on operating systems, we automatically download the required versions of the required "/><LineBreak/><Run Text="&#x9;applications for you."/><LineBreak/><Run Text="&#x9;2. Below, you'll find quick step-by-step instructions on how to setup your plugins."/></TextBlock>
+                    <Separator Height="22" Margin="10,92,10,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <Label x:Name="getOSValue" Content="" Margin="121,114,259.394,0" VerticalAlignment="Top" Foreground="White"/>
+                    <Label x:Name="OSLabel" Content="Operating System:" HorizontalAlignment="Left" Margin="9,114,0,0" VerticalAlignment="Top" RenderTransformOrigin="-6.868,-1.038" FontFamily="Open Sans" Foreground="White"/>
+                    <Label x:Name="CLRBrowserLabel" Content="CLR BROWSER" FontWeight="Bold" FontSize="13" HorizontalAlignment="Left" Margin="9,145,0,0" VerticalAlignment="Top" FontFamily="Open Sans" Foreground="White"/>
+                    <Button x:Name="visualStudioDownload" Content="C++ 2013 DL/Install" HorizontalAlignment="Left" Margin="60,285,0,0" VerticalAlignment="Top" Width="175" Click="visualStudioDownload_Click" Height="26" Background="#FF7063B5" BorderBrush="White"/>
+                    <Label x:Name="downloadStatusVS" Content="" HorizontalAlignment="Left" Margin="240,285,0,0" VerticalAlignment="Top" Width="419"/>
+                    <Button x:Name="netDownload" Content=".NET 4.5 DL/Install" HorizontalAlignment="Left" Margin="60,383,0,0" VerticalAlignment="Top" Width="175" Click="netDownload_Click" Height="26" BorderBrush="White" Background="#FF7063B5"/>
+                    <Label x:Name="downloadStatusNET" Content="" HorizontalAlignment="Left" Margin="240,383,0,0" VerticalAlignment="Top" Width="419"/>
+                    <Button x:Name="getCLR" IsEnabled="False" Content="CLR Browser DL/Install" HorizontalAlignment="Left" Margin="60,483,0,0" VerticalAlignment="Top" Width="175" Click="getCLR_Click" Height="26" Background="#FF006CBF" BorderBrush="White"/>
+                    <Label x:Name="downloadStatusCLR" Content="" HorizontalAlignment="Left" Margin="-145.394,483,0,0" VerticalAlignment="Top" Width="419" Grid.Column="1"/>
+                    <ProgressBar x:Name="progressBarCLR" BorderBrush="Gray" BorderThickness="1" Height="26" Margin="240,483,150.394,0" VerticalAlignment="Top"/>
+                    <Label x:Name="MSVStep1" Content="Step 1: Microsoft Visual C++ 2013" FontWeight="Bold" Margin="60,215,150.394,0" VerticalAlignment="Top" FontFamily="Open Sans" Foreground="White"/>
+                    <Label x:Name="MSVStep1Des" Content="You need to have MS Visual C++ 2013 or above to run CLR. The button below will download AND prompt installation. If you do not have C++ 2013, follow the steps in the installation wizard.&#xA;NOTE: When you press the button below, if you already have it, it will ask you to uninstall. In this case, cancel the installation wizard." HorizontalAlignment="Left" Margin="60,237,0,0" VerticalAlignment="Top" Width="1073" Height="43" FontFamily="Open Sans" Foreground="White" Grid.ColumnSpan="2"/>
+                    <TextBlock x:Name="CLRDes" FontStyle="Italic" HorizontalAlignment="Left" Margin="10,176,0,0" TextWrapping="Wrap" Text="The CLR browser allows you to add web-based content onto your stream. With CLR Browser you can add Twitch chat to your stream, set up your Twitch Alerts, and it's how we will deploy the layouts. Below, you will find the necessary steps to ensure that the CLR Browser plugin works." VerticalAlignment="Top" Height="34" Width="1196" FontFamily="Open Sans" Foreground="White" Grid.ColumnSpan="2"/>
+                    <Label x:Name="NET45Step2" Content="Step 2: .NET Framework 4.5" FontWeight="Bold" Margin="60,315,150.394,0" VerticalAlignment="Top" FontFamily="Open Sans" Foreground="White"/>
+                    <Label x:Name="NET45Step2Des" Content="You need to have .NET 4.5.x to run CLR. The button below will download AND prompt installation. If you do not have .NET 4.5, follow the steps in the installation wizard.&#xA;NOTE: When you press the button below, if you already have it, it will ask you to uninstall. In this case, cancel the installation wizard." HorizontalAlignment="Left" Margin="60,337,0,0" VerticalAlignment="Top" Width="985" Height="46" FontFamily="Open Sans" Foreground="White" Grid.ColumnSpan="2"/>
+                    <Label x:Name="CLRStep3" Content="Step 3: CLR Browser Plugin" FontWeight="Bold" Margin="60,416,150.394,0" VerticalAlignment="Top" FontFamily="Open Sans" Foreground="White"/>
+                    <Label x:Name="CLRStep3Des" Content="This will download the .zip from the site to My Documents, and unzip it to C:\Program Files\OBS\plugins for 64-bit OBS and C:\Program Files (x86)\OBS\plugins for 32-bit OBS.&#xA;NOTE: If your OBS plugins are not located in the specific directories above, contact us for assistance. You MUST be running this program as an &quot;Administrator&quot; to press the button below." HorizontalAlignment="Left" Margin="59,438,0,0" VerticalAlignment="Top" Width="1056" Height="45" FontFamily="Open Sans" Foreground="White" Grid.ColumnSpan="2"/>
+                    <Label x:Name="CLRHelp" Content="" HorizontalAlignment="Left" Margin="60,571,0,0" VerticalAlignment="Top" Width="928" Grid.ColumnSpan="2"/>
+                    <Label x:Name="CLRHelp2" Content="" HorizontalAlignment="Left" Margin="59,602,0,0" VerticalAlignment="Top" Width="929" Grid.ColumnSpan="2"/>
+                    <ProgressBar x:Name="progressBarCLR64" BorderBrush="Gray" BorderThickness="1" Height="26" Margin="240,514,150.394,0" VerticalAlignment="Top"/>
+                    <Label x:Name="downloadStatusCLR64" Content="" HorizontalAlignment="Left" Margin="-145.394,514,0,0" VerticalAlignment="Top" Width="419" Grid.Column="1"/>
+                    <Label x:Name="label" Content="64-Bit" HorizontalAlignment="Right" Margin="0,514,302.764,0" VerticalAlignment="Top"/>
+                    <Label x:Name="label23" Content="32-Bit" HorizontalAlignment="Right" Margin="0,483,302.764,0" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+
+
+    </Grid>
+</Window>
